@@ -13,7 +13,7 @@ CREATE TABLE checkpoint_mapa (
 
 CREATE TABLE jogador (
     id_jogador BIGINT PRIMARY KEY AUTO_INCREMENT,
-    id_login_FK BIGINT.
+    id_login_FK BIGINT,
     checkpoint_jagador_FK INT,
     nome_jogador VARCHAR,
     status_conta_jogador VARCHAR,
@@ -27,43 +27,51 @@ CREATE TABLE atributo_jogador (
     id_jogador_FK BIGINT,
     id_raca_FK INT,
     id_classe_FK INT,
-    habilidade_jogador_FK 
+    habilidade_jogador VARCHAR,
     hp_jogador INT,
     xp_jogador BIGINT,
-    forca_jogador
-    foco_jogador
-    reflexo_jogador
-    mente_jogador
+    forca_jogador INT,
+    foco_jogador INT,
+    reflexo_jogador INT,
+    mente_jogador INT,
     FOREIGN KEY (id_jogador_FK) REFERENCES jogador(id_jogador),
     FOREIGN KEY (id_raca_FK) REFERENCES raca(id_raca),
     FOREIGN KEY (id_classe_FK) REFERENCES classe(id_classe)
 );
 
 CREATE TABLE raca (
-    id_raca
+    id_raca INT PRIMARY KEY AUTO_INCREMENT,
 );
 
 CREATE TABLE classe (
-    id_classe
+    id_classe BIGINT PRIMARY KEY AUTO_INCREMENT,
 );
 
 CREATE TABLE inventario (
-    id_inventario PK
-    id_jogador FK
-    id_slot_inventario PK
-    id_item FK
-    quantidade_total_do_slot
+    id_inventario BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id_slot_inventario INT PRIMARY KEY AUTO_INCREMENT,
+    id_jogador_FK BIGINT,
+    id_item_FK INT,
+    quantidade_total_do_slot INT
+    FOREIGN KEY (id_jogador_FK) REFERENCES jogador(id_jogador),
+    FOREIGN KEY (id_item_FK) REFERENCES item(id_item)
 );
 
 CREATE TABLE npc (
-    id_npc PK
-    amizade_npc
+    id_npc INT PRIMARY KEY AUTO_INCREMENT
+);
+
+CREATE TABLE amizade_jogador (
+    id_jogador_FK BIGINT,
+    id_npc_FK INT,
+    pontos_amizade INT
 );
 
 CREATE TABLE item (
-    id_item PK
-    descricao_item
-);
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    descricao_item VARCHAR
+)
+
 /*
 https://docs.google.com/document/d/1E0A-FJHErcz_sHSzqO6JAmdunl-YpohUC_fhxepxqM0/edit?tab=t.0
 */
