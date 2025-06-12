@@ -56,7 +56,7 @@ CREATE TABLE atributo_jogador (
     id_jogadorFK BIGINT,
     id_racaFK INT(3),
     id_classeFK INT(3),
-    id_habilidadeFK VARCHAR(3),
+    id_habilidadeFK INT(3),
     hp_jogador INT(7),
     xp_jogador INT,
     forca_jogador INT(3),
@@ -83,13 +83,13 @@ CREATE TABLE inventario (
 CREATE TABLE npc (
     id_npc INT(4) PRIMARY KEY AUTO_INCREMENT,
     nome_npc VARCHAR(20),
-    descricao_npc(100)
+    descricao_npc VARCHAR(100)
 );
 
 --max de 99999 pontos de amizade
 --modelo da PK, ex: "1122334455667788990-1111" feito com o id do jogador e do npc
 CREATE TABLE amizade_jogador (
-    id_amizade_NPC VARCHAR(24) 
+    id_amizade_NPC VARCHAR(24) PRIMARY KEY AUTO_INCREMENT,
     id_jogadorFK BIGINT,
     id_npcFK INT(4),
     pontos_amizade INT(5)
